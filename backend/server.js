@@ -8,13 +8,12 @@ app.get("/", (req, res) => {
 })
 
 app.get("/api/match/:userID", (req, res) => {
-    const userID = parseInt(req.params.userID);
-    res.send(userID);
+    res.send(req.params.userID);
 })
 
 /* Start the server */
 app.use(express.json());
 
-app.listen(port, () => {
+app.listen(port, (req, res) => {
     console.log(`Listening on port ${port}...`);
 })
