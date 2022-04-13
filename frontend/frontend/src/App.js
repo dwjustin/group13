@@ -1,17 +1,9 @@
 import React from 'react';
 import {
   ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
   theme,
   Switch,
 } from '@chakra-ui/react';
-import { ColorModeSwitcher } from './ColorModeSwitcher';
-import { Logo } from './Logo';
 import Home from './Home';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import Profile from './Components/Profile';

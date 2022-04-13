@@ -1,11 +1,11 @@
-import { Button, Container, Input, Link } from "@chakra-ui/react";
-import { useState } from "react";
+import { Button, Container, Input} from "@chakra-ui/react";
+
 
 const Login=()=>{
 
     return (
         <Container>
-            <Input placeholder="User ID"/>
+            <Input type='text' placeholder="User ID"/>
             <Input placeholder="Password"/>
             <Button>Sign In</Button>
             

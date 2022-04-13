@@ -48,8 +48,8 @@ const Questions=()=>{
             borderRadius={{ base: 'none', sm: 'xl' }}>    
                 <Heading>Select your type</Heading>
                 <Select placeholder="Choose your type">
-                    <option type='morning' onChange={setType}>Early Bird</option>
-                    <option type='night' onChange={setType}>Night Owl</option>
+                    <option value='morning' onChange={setType}>Early Bird</option>
+                    <option value='night' onChange={setType}>Night Owl</option>
                 </Select>
             </Box>
         </Container>

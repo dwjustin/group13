@@ -1,4 +1,4 @@
-import {Container, Navigator, Button} from '@chakra-ui/react'
+import {Container, Button} from '@chakra-ui/react'
 
 const Header=()=>{
 
