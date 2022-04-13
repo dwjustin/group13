@@ -17,11 +17,11 @@ const Questions=()=>{
                 <Heading>Choose your Sexual Orientation</Heading>
                 <RadioGroup onChange={setSex} value={sex}>
                     <Stack direction='column'>
-                        <Radio sex='1'>Heterosexual</Radio>
-                        <Radio sex='2'>Bisexual</Radio>
-                        <Radio sex='3'>Homosexual</Radio>
-                        <Radio sex='4'>Asexual</Radio>
-                        <Radio sex='5'>Pansexual</Radio>
+                        <Radio value='1'>Heterosexual</Radio>
+                        <Radio value='2'>Bisexual</Radio>
+                        <Radio value='3'>Homosexual</Radio>
+                        <Radio value='4'>Asexual</Radio>
+                        <Radio value='5'>Pansexual</Radio>
                     </Stack>
                 </RadioGroup>
             </Box>
@@ -33,11 +33,11 @@ const Questions=()=>{
                 <Heading>Choose your race</Heading>
                 <RadioGroup onChange={setRace} value={race}>
                     <Stack direction='column'>
-                        <Radio race='1'>Caucasian</Radio>
-                        <Radio race='2'>Mongolian</Radio>
-                        <Radio race='3'>Negro</Radio>
-                        <Radio race='4'>Malay</Radio>
-                        <Radio race='5'>Polynesian</Radio>
+                        <Radio value='1'>Caucasian</Radio>
+                        <Radio value='2'>Mongolian</Radio>
+                        <Radio value='3'>Negro</Radio>
+                        <Radio value='4'>Malay</Radio>
+                        <Radio value='5'>Polynesian</Radio>
                     </Stack>
                 </RadioGroup>
             </Box>
