@@ -89,27 +89,12 @@ RETURNS JSON with the userID's of the matches sorted Highest-Lowest by match sco
 
 **never sent to frontend
 
-### Database Model
-
-
-
-#### CURD Data Retrieval 
-
-##### Create
-
-##### Update
-
-##### Retrieve
-
-##### Destroy
+### Database Model - CURD model
 
 ### URL Endpoints
 
-| Name    | Type | Endpoint     | Description                            | Data                              | Parameters           |
-|---------|------|--------------|----------------------------------------|-----------------------------------|----------------------|
-| Home    | Get  | /            | Homepage                               | Homepage index.html               | None                 |
-| Sign-up | Post | /api/signup  | User Signup request                    | Signup details (see sign in)      | Username + Password  |
-| Match   | Get  | /api/match   | List of users + a match score per user | JSON with user info + match score | User's userID        |
-| Profile | Get  | /api/profile | Fetch a specific user profile          | JSON with user information        | Target User's userID |
-
-### Sample Users and Data
+| Name    | Type | Endpoint               | Description                            | Data                              | Parameters            |
+|---------|------|------------------------|----------------------------------------|-----------------------------------|-----------------------|
+| Sign-up | Post | /api/signup            | User Signup request                    | Signup details (see sign in)      | Username + Password   |
+| Match   | Get  | /api/match/:userID     | List of users + a match score per user | JSON with user info + match score | Current user's userID |
+| Profile | Get  | /api/profile/:targetID | Fetch a specific user profile          | JSON with user information        | Target User's userID  |
