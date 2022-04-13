@@ -14,15 +14,23 @@ Authors: Noah Sedlik, Aditya Tummala, Damien Toh
 ## Backend Features
 
 ### User Sign-up
-Description of the data we'll need / endpoints / where data will be stored
+**TODO** Description of the data we'll need / endpoints / where data will be stored
 
 #### Procedure
 POST request to *sign-up* endpoint with the following Schema:
 
 | Key      | Type   |
 |----------|--------|
-| Username | String |
-| Password | String |
+| username | String |
+| password | String |
+
+RETURNS unique integer *userID*
+
+ERRORS if username is taken
+
+Server-side, create new user with Username, Password, and a unique userID
+
+userID is created by hashing the email
 
 ### User Sign-in
 Description of the data we'll need / endpoints / how we'll do it
@@ -61,28 +69,32 @@ RETURNS JSON with the userID's of the matches sorted Highest-Lowest by match sco
     * Location (Unit 1, 2, 3, etc.)
     * Room size (Double, Triple, etc.)
 
-### Database Model
+#### User Schema:
 
-User Schema:
+| Datapoint                       | Type    | Description              |
+|---------------------------------|---------|--------------------------|
+| username                        | String  | User Email               |
+| password**                      | String  | User Password            |
+| userID                          | Integer | unique user ID           |
+| pictureURL                      | TODO    | Profile picture          |
+| data.cleanliness                | Integer | Cleanliness rating (1-5) |
+| data.morningPerson              | Boolean | Morning Person (T/F)     |
+| data.nightPerson                | Boolean | Night Owl (T/F)          |
+| data.smokingTolerance           | Boolean | Okay with smoking? (T/F) |
+| data.housing.location.unit1     | Boolean | Unit 1 Yes/No (T/F)      |
+| data.housing.location.unit2     | Boolean | Unit 2 Yes/No (T/F)      |
+| data.housing.location.unit3     | Boolean | Unit 3 Yes/No (T/F)      |
+| data.housing.location.foothill  | Boolean | Foothill Yes/No (T/F)    |
+| data.housing.location.clarkKerr | Boolean | Clark Kerr Yes/No (T/F)  |
 
+**never sent to frontend
 
-#### CURD Data Retrieval 
-
-##### Create
-
-##### Update
-
-##### Retrieve
-
-##### Destroy
+### Database Model - CURD model
 
 ### URL Endpoints
 
-| Name    | Type | Endpoint     | Description                            | Data                              | Parameters           |
-|---------|------|--------------|----------------------------------------|-----------------------------------|----------------------|
-| Home    | Get  | /            | Homepage                               | Homepage index.html               | None                 |
-| Sign-up | Post | /api/signup  | User Signup request                    | Signup details (see sign in)      | Username + Password  |
-| Match   | Get  | /api/match   | List of users + a match score per user | JSON with user info + match score | User's Username      |
-| Profile | Get  | /api/profile | Fetch a specific user profile          | JSON with user information        | Target User's userID |
-
-### Sample Users and Data
+| Name    | Type | Endpoint               | Description                            | Data                              | Parameters            |
+|---------|------|------------------------|----------------------------------------|-----------------------------------|-----------------------|
+| Sign-up | Post | /api/signup            | User Signup request                    | Signup details (see sign in)      | Username + Password   |
+| Match   | Get  | /api/match/:userID     | List of users + a match score per user | JSON with user info + match score | Current user's userID |
+| Profile | Get  | /api/profile/:targetID | Fetch a specific user profile          | JSON with user information        | Target User's userID  |
