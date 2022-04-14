@@ -8,13 +8,24 @@ app.get("/", (req, res) => {
 })
 
 app.get("/api/match/:userID", (req, res) => {
-    const userID = parseInt(req.params.userID);
-    res.send(userID);
+    // TODO -- run the matching algorithm
+})
+
+app.get("/api/profile/:targetID", (req, res) => {
+    const targetID = parseInt(req.params.targetID);
+    getProfile(targetID);
+    res.send(targetID);
+    
 })
 
 /* Start the server */
 app.use(express.json());
 
-app.listen(port, () => {
+app.listen(port, (req, res) => {
     console.log(`Listening on port ${port}...`);
 })
+
+function getProfile(targetID) {
+    assert(isNaN(targetID));
+    // TODO - make request to database and return userprofile JSON
+}

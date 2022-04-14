@@ -86,6 +86,8 @@ RETURNS JSON with the userID's of the matches sorted Highest-Lowest by match sco
 | data.housing.location.unit3     | Boolean | Unit 3 Yes/No (T/F)      |
 | data.housing.location.foothill  | Boolean | Foothill Yes/No (T/F)    |
 | data.housing.location.clarkKerr | Boolean | Clark Kerr Yes/No (T/F)  |
+| data.housing.location.martinez  | Boolean | Martinez   Yes/No (T/F)  |
+| data.housing.location.blackwell | Boolean | Blackwell  Yes/No (T/F)  |
 
 **never sent to frontend
 
