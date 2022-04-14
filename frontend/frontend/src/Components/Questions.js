@@ -1,4 +1,14 @@
-import { Container,Heading, Box, RadioGroup, Stack, Radio, useBreakpointValue, useColorModeValue, Select } from "@chakra-ui/react"
+import { 
+    Container,
+    Heading, 
+    Box, 
+    RadioGroup, 
+    Stack, 
+    Radio, 
+    useBreakpointValue, 
+    useColorModeValue, 
+    Textarea,
+    Button } from "@chakra-ui/react"
 import { useState } from "react";
 
 const Questions=()=>{
@@ -6,6 +16,11 @@ const Questions=()=>{
     const [sex, setSex]=useState();
     const [race, setRace]=useState();
     const [type, setType]=useState();
+    const [etc, setEtc]=useState();
+
+    function ToResult(e){
+        window.location.href="/Result";
+    }
 
     return (
         <Container>
@@ -46,12 +61,31 @@ const Questions=()=>{
             bg={useBreakpointValue({ base: 'transparent', sm: 'bg-surface' })}
             boxShadow={{ base: 'none', sm: useColorModeValue('md', 'md-dark') }}
             borderRadius={{ base: 'none', sm: 'xl' }}>    
-                <Heading>Select your type</Heading>
-                <Select placeholder="Choose your type">
-                    <option value='morning' onChange={setType}>Early Bird</option>
-                    <option value='night' onChange={setType}>Night Owl</option>
-                </Select>
+                <Heading>Select your Routine type</Heading>
+                <RadioGroup onChange={setType} value={type}>   
+                    <Stack direction="row">
+                        <Radio value='1'>Early Bird</Radio>
+                        <Radio value='2'>Night Owl</Radio>
+                    </Stack>
+                </RadioGroup> 
             </Box>
+            <Box py={{ base: '0', sm: '8' }}
+                    px={{ base: '4', sm: '10' }}
+                    bg={useBreakpointValue({ base: 'transparent', sm: 'bg-surface' })}
+                    boxShadow={{ base: 'none', sm: useColorModeValue('md', 'md-dark') }}
+                    borderRadius={{ base: 'none', sm: 'xl' }}>    
+                <Heading>Anything else you have to tell us?</Heading>
+                <Textarea placeholder="ex) I can sleep well even with the lights turned on.">
+                </Textarea>
+            </Box>
+            <Button onClick={ToResult}
+                size='md'
+                height='48px'
+                width='200px'
+                border='2px'
+                borderColor='green.500'>
+                Search!
+            </Button>
         </Container>
     )
 }
