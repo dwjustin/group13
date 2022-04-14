@@ -1,11 +1,10 @@
 import React from 'react';
 import {
   ChakraProvider,
-  theme,
-  Switch,
+  theme
 } from '@chakra-ui/react';
 import Home from './Home';
-import { Route, BrowserRouter as Router } from 'react-router-dom';
+import { Switch,Route, BrowserRouter as Router } from 'react-router-dom';
 import Profile from './Components/Profile';
 import Login from './Components/Login';
 import Questions from './Components/Questions';
