@@ -27,6 +27,7 @@ function Profile(){
                     borderRadius='100px'
                     display='flex'
                     justifyContent='center'
+                    margin='20px'
                     src="https://preview.redd.it/7ayjc8s4j2n61.png?auto=webp&s=609a58fa21d46424879ee44156e44e0404940583" alt='default pic'
                 />
                 <Button margin="20px">Change Profile Pic</Button>
