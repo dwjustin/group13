@@ -1,4 +1,15 @@
-import { Container,Heading, Box, RadioGroup, Stack, Radio, useBreakpointValue, useColorModeValue, Select } from "@chakra-ui/react"
+import { 
+    Container,
+    Heading, 
+    Box, 
+    RadioGroup, 
+    Stack, 
+    Radio, 
+    useBreakpointValue, 
+    useColorModeValue, 
+    Select, 
+    Textarea,
+    Button } from "@chakra-ui/react"
 import { useState } from "react";
 
 const Questions=()=>{
@@ -6,6 +17,7 @@ const Questions=()=>{
     const [sex, setSex]=useState();
     const [race, setRace]=useState();
     const [type, setType]=useState();
+    const [etc, setEtc]=useState();
 
     return (
         <Container>
@@ -46,12 +58,30 @@ const Questions=()=>{
             bg={useBreakpointValue({ base: 'transparent', sm: 'bg-surface' })}
             boxShadow={{ base: 'none', sm: useColorModeValue('md', 'md-dark') }}
             borderRadius={{ base: 'none', sm: 'xl' }}>    
-                <Heading>Select your type</Heading>
-                <Select placeholder="Choose your type">
-                    <option value='morning' onChange={setType}>Early Bird</option>
-                    <option value='night' onChange={setType}>Night Owl</option>
+                <Heading>Select your Routine type</Heading>
+                <Select placeholder="Choose your routine type">
+                    <option value='1' onChange={setType}>Early Bird</option>
+                    <option value='2' onChange={setType}>Night Owl</option>
                 </Select>
             </Box>
+            <Box py={{ base: '0', sm: '8' }}
+                    px={{ base: '4', sm: '10' }}
+                    bg={useBreakpointValue({ base: 'transparent', sm: 'bg-surface' })}
+                    boxShadow={{ base: 'none', sm: useColorModeValue('md', 'md-dark') }}
+                    borderRadius={{ base: 'none', sm: 'xl' }}>    
+                <Heading>Anything else you have to tell us?</Heading>
+                <Textarea value={etc} onChange={setEtc} placeholder="ex) I can sleep well even with the lights turned on.">
+                    
+                </Textarea>
+            </Box>
+            <Button
+                size='md'
+                height='48px'
+                width='200px'
+                border='2px'
+                borderColor='green.500'>
+                Search!
+            </Button>
         </Container>
     )
 }
