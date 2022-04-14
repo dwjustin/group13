@@ -7,7 +7,6 @@ import {
     Radio, 
     useBreakpointValue, 
     useColorModeValue, 
-    Select, 
     Textarea,
     Button } from "@chakra-ui/react"
 import { useState } from "react";
@@ -18,6 +17,10 @@ const Questions=()=>{
     const [race, setRace]=useState();
     const [type, setType]=useState();
     const [etc, setEtc]=useState();
+
+    function ToResult(e){
+        window.location.href="/Result";
+    }
 
     return (
         <Container>
@@ -59,10 +62,12 @@ const Questions=()=>{
             boxShadow={{ base: 'none', sm: useColorModeValue('md', 'md-dark') }}
             borderRadius={{ base: 'none', sm: 'xl' }}>    
                 <Heading>Select your Routine type</Heading>
-                <Select placeholder="Choose your routine type">
-                    <option value='1' onChange={setType}>Early Bird</option>
-                    <option value='2' onChange={setType}>Night Owl</option>
-                </Select>
+                <RadioGroup onChange={setType} value={type}>   
+                    <Stack direction="row">
+                        <Radio value='1'>Early Bird</Radio>
+                        <Radio value='2'>Night Owl</Radio>
+                    </Stack>
+                </RadioGroup> 
             </Box>
             <Box py={{ base: '0', sm: '8' }}
                     px={{ base: '4', sm: '10' }}
@@ -70,11 +75,10 @@ const Questions=()=>{
                     boxShadow={{ base: 'none', sm: useColorModeValue('md', 'md-dark') }}
                     borderRadius={{ base: 'none', sm: 'xl' }}>    
                 <Heading>Anything else you have to tell us?</Heading>
-                <Textarea value={etc} onChange={setEtc} placeholder="ex) I can sleep well even with the lights turned on.">
-                    
+                <Textarea placeholder="ex) I can sleep well even with the lights turned on.">
                 </Textarea>
             </Box>
-            <Button
+            <Button onClick={ToResult}
                 size='md'
                 height='48px'
                 width='200px'

@@ -9,6 +9,7 @@ import Profile from './Components/Profile';
 import Login from './Components/Login';
 import Questions from './Components/Questions';
 import About from './Components/About';
+import Result from './Components/Result';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route exact path='/Login' component={Login}/>
           <Route exact path='/Questions' component={Questions}/>
           <Route exact path='/About' component={About}/>
+          <Route exact path='/Result' component={Result}/>
         </ChakraProvider>
         </Switch>
     </Router>
