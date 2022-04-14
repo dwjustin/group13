@@ -1,7 +1,7 @@
 const { randomInt } = require('crypto');
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3002;
 
 /* ENDPOINTS */
 app.get("/", (req, res) => {
