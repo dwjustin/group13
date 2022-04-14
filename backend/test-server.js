@@ -6,6 +6,8 @@ const db = mongoose.connection
 
 const port = process.env.PORT || 3000;
 
+app.use(express.json());
+
 const matches = [
     {
         name: 'Aditya',
@@ -44,12 +46,10 @@ const matches = [
     }
 ];
 
-app.use(express.json());
+app.get('/', (req, res) => {
+    res.send("Hello world!");
+})
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}...`)
-})
-
-app.get('/', (req, res) => {
-    res.send("Hello world!");
 })
