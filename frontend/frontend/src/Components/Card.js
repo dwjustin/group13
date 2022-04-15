@@ -9,9 +9,21 @@ import {
     Link,
     Badge,
     useColorModeValue,
+    List,
+    ListItem,
+    ListIcon,
+    OrderedList,
+    UnorderedList,
   } from '@chakra-ui/react';
 
-import {useState} from 'react';
+import {
+  MoonIcon,
+  SunIcon,
+  CheckCircleIcon,
+  NotAllowedIcon,
+} from '@chakra-ui/icons';
+
+import {useState, useEffect} from 'react';
 import axios from 'axios';
   
 export default function Card(props) {
@@ -19,10 +31,43 @@ export default function Card(props) {
     //pfp, location preference, morning/night, room size bio
     const [data, setData] = useState();
 
-    axios
-        .get(`http://localhost:3002/api/profile/${id}`)
-        .then((data) => setData(data))
-        .catch((error) => console.log('hi'));
+    const getData = () => {
+      console.log('helo');
+      axios
+          .get(`http://localhost:3002/api/profile/${id}`)
+          .then((data) => setData(data.data))
+          .catch((error) => console.log('hi'));
+    };
+    
+    useEffect(() => {
+      getData();
+    }, []);
+
+    /*const housingList = data["data"].housingList.map((item) => (
+      <ListItem>{item}</ListItem>
+    ));
+                  data ? data['profileURL'] : 'https://tinder.com/static/tinder.png'
+
+    console.log(data["data"]);
+    {data ? data['name'] : 'Test'}
+    */
+    const housingArr = data ? data['data'].housinglist : 'loading';
+    console.log(data ? housingArr[1] : 'loading');
+    const housingList = data ? data['data'].housinglist : 'loading'
+    function getIcon(icon){
+      if(icon == 'moon'){
+        return <MoonIcon/>
+      }
+      if(icon == 'sun'){
+        return <SunIcon/>
+      }
+      if(icon == 'check'){
+        return <CheckCircleIcon/>
+      }
+      if(icon == 'notallowed'){
+        return <NotAllowedIcon/>
+      }
+    }
 
     return (
       <Center py={6}>
@@ -37,7 +82,7 @@ export default function Card(props) {
           <Avatar
             size={'xl'}
             src={
-              'https://preview.redd.it/7ayjc8s4j2n61.png?auto=webp&s=609a58fa21d46424879ee44156e44e0404940583'
+              data ? data['pictureURL'] : 'https://tinder.com/static/tinder.png'
             }
             alt={'Avatar Alt'}
             mb={4}
@@ -55,20 +100,19 @@ export default function Card(props) {
             }}
           />
           <Heading fontSize={'2xl'} fontFamily={'body'}>
-            {data["name"]}
+            {data ? data['name'] : 'Loading'}
           </Heading>
           <Text fontWeight={600} color={'gray.500'} mb={4}>
-            @lindsey_jam3s
+            {data ? data['year'] : 'Loading'}
           </Text>
+          <UnorderedList>
+            
+          </UnorderedList>
           <Text
             textAlign={'center'}
             color={useColorModeValue('gray.700', 'gray.400')}
             px={3}>
-            Actress, musician, songwriter and artist. PM for work inquires or{' '}
-            <Link href={'#'} color={'blue.400'}>
-              #tag
-            </Link>{' '}
-            me in your posts
+            {data ? data['bio'] : 'Loading'}
           </Text>
   
           <Stack align={'center'} justify={'center'} direction={'row'} mt={6}>
@@ -77,24 +121,19 @@ export default function Card(props) {
               py={1}
               bg={useColorModeValue('gray.50', 'gray.800')}
               fontWeight={'400'}>
-              #art
+              {data ? (data['morningPerson'] ? 'Morning person ' : 'Night person ')  : 'Loading'} 
+              {data ? (data['morningPerson'] ? getIcon('sun') : getIcon('moon'))  : 'Loading'}
             </Badge>
             <Badge
               px={2}
               py={1}
               bg={useColorModeValue('gray.50', 'gray.800')}
               fontWeight={'400'}>
-              #photography
-            </Badge>
-            <Badge
-              px={2}
-              py={1}
-              bg={useColorModeValue('gray.50', 'gray.800')}
-              fontWeight={'400'}>
-              #music
+              {data ? (data['smokingTolerance'] ? 'Smoke allowed ' : 'No smoking ')  : 'Loading'}
+              {data ? (data['smokingTolerance'] ? getIcon('check') : getIcon('notallowed'))  : 'Loading'}
             </Badge>
           </Stack>
-  
+
           <Stack mt={8} direction={'row'} spacing={4}>
             <Button
               flex={1}
