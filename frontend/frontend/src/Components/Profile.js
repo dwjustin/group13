@@ -1,6 +1,7 @@
 import { 
     Container, 
-    Text, 
+    Text,
+    Heading, 
     Image, 
     Box, 
     Flex, 
@@ -15,25 +16,69 @@ import {
     EditIcon,
     Input  
 } from "@chakra-ui/react";
-import styles from './profile.module.css';
+
+import Header from './Header.js'
+
+import {useState, useEffect} from 'react';
+import axios from 'axios';
 
 function Profile(){
+    //const id = props.id; will make each profile page unique to id/route
+    const id = 1;
+
+    //using dummy person for now
+    const [data, setData] = useState();
+
+    const getData = () => {
+        axios
+          .get(`http://localhost:3002/api/profile/${id}`)
+          .then((data) => setData(data.data))
+          .catch((error) => console.log('hi'));
+        console.log('helo');
+    };
     
+    useEffect(() => {
+      getData();
+    }, []);
+
+    const housingArr = data ? data['data'].housinglist : 'loading';
+
     return(
         <div>
+            <Header/>
             <Flex align="center" w="100%" justify="center" flexDirection="column">
                 <Image 
                     boxSize='200px'
                     borderRadius='100px'
                     display='flex'
                     justifyContent='center'
-                    src="https://preview.redd.it/7ayjc8s4j2n61.png?auto=webp&s=609a58fa21d46424879ee44156e44e0404940583" alt='default pic'
+                    margin='20px'
+                    src={
+                        data ? data['pictureURL'] : 'https://tinder.com/static/tinder.png'
+                      } alt='default pic'
                 />
                 <Button margin="20px">Change Profile Pic</Button>
-                <Editable defaultValue='Take some chakra' margin="20px" isPreviewFocusable={false}>
-                    <EditablePreview />
-                    <EditableInput />
-                </Editable>
+                <Heading as='h3' size='lg'>
+                    {data ? data['name'] : 'Loading'}<br/>
+                </Heading>
+                <Text>
+                    <em>{data ? data['year'] : 'Loading'}</em><br/>
+                    {data ? data['bio'] : 'Loading'}<br/>
+                </Text>
+                <Heading as='h5' size='md'>
+                    <br/>Preferences
+                </Heading>
+                <Text>
+                    Smoke Tolerance: {data ? (data['smokingTolerance'] ? 'Smoke allowed ' : 'No smoking') : 'Loading'}<br/>
+                    Sleep schedule: {data ? (data['nightPerson'] ? 'Night person' : 'Morning person') : 'Loading'}<br/>
+                    <br/>
+                    Housing preferences:<br/>
+                    {data ? (housingArr.map((item) => (
+                        <div>
+                            <Text>{item}</Text>
+                        </div>
+                    ))) : 'Loading'}
+                </Text>
                 <Button margin="20px">Edit Profile</Button>
             </Flex>
             <Flex>

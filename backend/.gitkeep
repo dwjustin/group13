@@ -1,0 +1,14 @@
+const express = require("express");
+const mongoose = require('mongoose')
+const db = mongoose.connection
+const url = "mongodb://127.0.0.1:27017/apod"
+
+mongoose.connect(url, { useUnifiedTopology: true, useNewUrlParser: true })
+
+const PORT = process.env.PORT || 3000;
+
+const app = express();
+
+app.listen(PORT, () => {
+  console.log(`Server listening on ${PORT}`);
+});

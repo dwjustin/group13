@@ -71,21 +71,23 @@ RETURNS JSON with the userID's of the matches sorted Highest-Lowest by match sco
 
 #### User Schema:
 
-| Datapoint                       | Type    | Description              |
-|---------------------------------|---------|--------------------------|
-| username                        | String  | User Email               |
-| password**                      | String  | User Password            |
-| userID                          | Integer | unique user ID           |
-| pictureURL                      | TODO    | Profile picture          |
-| data.cleanliness                | Integer | Cleanliness rating (1-5) |
-| data.morningPerson              | Boolean | Morning Person (T/F)     |
-| data.nightPerson                | Boolean | Night Owl (T/F)          |
-| data.smokingTolerance           | Boolean | Okay with smoking? (T/F) |
-| data.housing.location.unit1     | Boolean | Unit 1 Yes/No (T/F)      |
-| data.housing.location.unit2     | Boolean | Unit 2 Yes/No (T/F)      |
-| data.housing.location.unit3     | Boolean | Unit 3 Yes/No (T/F)      |
-| data.housing.location.foothill  | Boolean | Foothill Yes/No (T/F)    |
-| data.housing.location.clarkKerr | Boolean | Clark Kerr Yes/No (T/F)  |
+| Datapoint              | Type    | Description              |
+|------------------------|---------|--------------------------|
+| username               | String  | User Email               |
+| password**             | String  | User Password            |
+| userID                 | Integer | unique user ID           |
+| pictureURL             | TODO    | Profile picture          |
+| data.cleanliness       | Integer | Cleanliness rating (1-5) |
+| data.morningPerson     | Boolean | Morning Person (T/F)     |
+| data.nightPerson       | Boolean | Night Owl (T/F)          |
+| data.smokingTolerance  | Boolean | Okay with smoking? (T/F) |
+| data.housing.unit1     | Boolean | Unit 1 Yes/No (T/F)      |
+| data.housing.unit2     | Boolean | Unit 2 Yes/No (T/F)      |
+| data.housing.unit3     | Boolean | Unit 3 Yes/No (T/F)      |
+| data.housing.foothill  | Boolean | Foothill Yes/No (T/F)    |
+| data.housing.clarkKerr | Boolean | Clark Kerr Yes/No (T/F)  |
+| data.housing.martinez  | Boolean | Martinez   Yes/No (T/F)  |
+| data.housing.blackwell | Boolean | Blackwell  Yes/No (T/F)  |
 
 **never sent to frontend
 
