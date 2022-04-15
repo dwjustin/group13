@@ -52,8 +52,8 @@ export default function Card(props) {
     {data ? data['name'] : 'Test'}
     */
     const housingArr = data ? data['data'].housinglist : 'loading';
-    console.log(data ? housingArr[1] : 'loading');
-    const housingList = data ? data['data'].housinglist : 'loading'
+    //console.log(data ? data['data'].housinglist[3] : 'loading');
+    //const housingList = data ? data['data'].housinglist : 'loading'
     function getIcon(icon){
       if(icon == 'moon'){
         return <MoonIcon/>
@@ -133,7 +133,6 @@ export default function Card(props) {
               {data ? (data['smokingTolerance'] ? getIcon('check') : getIcon('notallowed'))  : 'Loading'}
             </Badge>
           </Stack>
-
           <Stack mt={8} direction={'row'} spacing={4}>
             <Button
               flex={1}

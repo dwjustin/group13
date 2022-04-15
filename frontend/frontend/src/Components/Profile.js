@@ -15,12 +15,16 @@ import {
     EditIcon,
     Input  
 } from "@chakra-ui/react";
+
+import Header from './Header.js'
+
 import styles from './profile.module.css';
 
 function Profile(){
     
     return(
         <div>
+            <Header/>
             <Flex align="center" w="100%" justify="center" flexDirection="column">
                 <Image 
                     boxSize='200px'

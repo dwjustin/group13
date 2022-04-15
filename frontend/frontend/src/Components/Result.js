@@ -17,10 +17,12 @@ import {
     useColorModeValue,
   } from '@chakra-ui/react'
 import Card from "./Card";
+import Header from './Header.js'
 
 const Result=()=>{
     return( 
     <div>
+        <Header/>
         <Flex width="100%" justifyContent="center">
             <Card id="1"></Card>  
         </Flex>
