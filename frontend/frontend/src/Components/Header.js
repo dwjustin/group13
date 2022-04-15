@@ -18,11 +18,16 @@ const Header=()=>{
         window.location.href="/Login";
     }
 
+    function link2home(e){
+        window.location.href="/";
+    }
     return (<Container>
         <Button onClick={link2about}>About</Button>
         <Button onClick={link2result}>Results</Button>
         <Button onClick={link2profile}>Profile</Button>
         <Button onClick={link2login}>Login</Button>
+        <Button onClick={link2home}>Home</Button>
+
     </Container>)
     }
 export default Header;
