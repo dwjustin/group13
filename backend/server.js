@@ -1,7 +1,7 @@
 const { randomInt } = require('crypto');
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3002;
 
 /* ENDPOINTS */
 app.get("/", (req, res) => {
@@ -19,8 +19,8 @@ app.get("/api/match/:userID", (req, res) => {
 app.get("/api/profile/:targetID", (req, res) => {
     const targetID = parseInt(req.params.targetID);
     const profile = getProfile(targetID);
+    res.append('Access-Control-Allow-Origin', ['http://localhost:3002/api/profile/1']);
     res.send(profile);
-    
 })
 
 /* Start the server */
@@ -42,6 +42,8 @@ const testUser = {
     "name": "testuser",
     "userID": 12345,
     "pictureURL": "https://tinder.com/static/tinder.png",
+    "year" : "Freshman",
+    "bio" : "Web development enjoyer",
     "data": {
         "cleanliness": 5,
         "morningPerson": true,
@@ -55,6 +57,7 @@ const testUser = {
             "clarkKerr": true,
             "martinez": false,
             "blackwell": true,
-        }
+        },
+        "housinglist" : ['Unit 1', 'Unit 3', 'Clark Kerr', 'Blackwell'],
     }
 }

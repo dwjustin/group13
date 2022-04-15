@@ -1,7 +1,9 @@
 import { Text, Heading, List, ListItem, ListIcon } from "@chakra-ui/react";
+import Header from './Header.js'
 
 const About=()=>{
     return <>
+    <Header/>
     <Heading>About the Application...</Heading>
     
     <Text>
