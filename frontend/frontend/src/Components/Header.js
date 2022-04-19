@@ -1,4 +1,4 @@
-import {Container, Button} from '@chakra-ui/react'
+import {Container, Button, color, Box, Grid} from '@chakra-ui/react'
 
 const Header=()=>{
 
@@ -21,13 +21,48 @@ const Header=()=>{
     function link2home(e){
         window.location.href="/";
     }
-    return (<Container>
-        <Button onClick={link2about}>About</Button>
-        <Button onClick={link2result}>Results</Button>
-        <Button onClick={link2profile}>Profile</Button>
-        <Button onClick={link2login}>Login</Button>
-        <Button onClick={link2home}>Home</Button>
+    return (<Box width="100%" backgroundColor='#333'>
+        <Button sx=
+        {{
+            borderRadius:'0px',
+            float: 'center',
+            color: 'white',
+            padding:'14px 30px',
+            backgroundColor:'#333',
+         }} onClick={link2about}>About</Button>
+        <Button sx=
+        {{
+            borderRadius:'0px',
+            float: 'center',
+            color: 'white',
+            padding:'14px 30px',
+            backgroundColor:'#333',
+         }} onClick={link2result}>Results</Button>
+        <Button sx=
+        {{
+            borderRadius:'0px',
+            float: 'center',
+            color: 'white',
+            padding:'14px 30px',
+            backgroundColor:'#333',
+         }} onClick={link2profile}>Profile</Button>
+        <Button sx=
+        {{
+            borderRadius:'0px',
+            float: 'center',
+            color: 'white',
+            padding:'14px 30px',
+            backgroundColor:'#333',
+         }} onClick={link2login}>Login</Button>
+        <Button sx=
+        {{
+            borderRadius:'0px',
+            float: 'center',
+            color: 'white',
+            padding:'14px 30px',
+            backgroundColor:'#333',
+         }} onClick={link2home}>Home</Button>
 
-    </Container>)
+    </Box>)
     }
 export default Header;

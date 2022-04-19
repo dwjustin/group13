@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   ChakraProvider,
-  theme
+  theme, Box,Img
 } from '@chakra-ui/react';
 import Home from './Home';
 import { Switch,Route, BrowserRouter as Router } from 'react-router-dom';
@@ -17,12 +17,15 @@ function App() {
     <Router>
       <Switch>  
         <ChakraProvider theme={theme}>
+        <Box> 
+          <Img zIndex='-1' height='868px' position='absolute'  src='background.png' alt="No photo" objectFit='cover' /> </Box>
           <Route exact path='/' component={Home}/>
           <Route exact path='/Profile' component={Profile}/>
           <Route exact path='/Login' component={Login}/>
           <Route exact path='/Questions' component={Questions}/>
           <Route exact path='/About' component={About}/>
           <Route exact path='/Result' component={Result}/>
+        
         </ChakraProvider>
         </Switch>
     </Router>
