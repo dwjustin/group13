@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   ChakraProvider,
-  theme, Box,Img
+  extendTheme, Box,Img
 } from '@chakra-ui/react';
 import Home from './Home';
 import { Switch,Route, BrowserRouter as Router } from 'react-router-dom';
@@ -10,6 +10,12 @@ import Login from './Components/Login';
 import Questions from './Components/Questions';
 import About from './Components/About';
 import Result from './Components/Result';
+
+const theme=extendTheme({
+  fonts:{
+    heading: 'Heading Font Name, sans-serif'
+  }
+})
 
 function App() {
   return (
