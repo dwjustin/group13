@@ -10,11 +10,12 @@ import {
     useBreakpointValue, 
     useColorModeValue, 
     FormControl, 
-
+    Image,
     Checkbox,
     FormLabel,
     Divider, 
     Flex} from "@chakra-ui/react";
+import Home from "../Home";
 
 
 const Login=()=>{
@@ -25,8 +26,23 @@ const Login=()=>{
         window.location.href="/Questions";
     }
     return (
-        <Flex>
-            <Container  bg='white' maxW="lg" py={{ base: '12', md: '24' }} px={{ base: '0', sm: '8' }}>
+        
+        
+        <Stack direction={{base:'column', md:'row'}}>
+            <Stack>
+            <Flex p={8} flex={1} align={'center'} justify={'center'}>
+                <Home/>
+            </Flex>
+            
+            <Image width="full" height="100vh" zIndex='-1'  position='absolute'  src='background.png' alt="No photo"  /> 
+            </Stack>
+            <Flex  p={8} flex={0.5} align={'center'} justify={'center'}>
+                
+                <Box py={{ base: '0', sm: '8' }}
+            px={{ base: '4', sm: '10' }}
+            bg='white'
+            boxShadow={{ base: 'none', sm: useColorModeValue('md', 'md-dark') }}
+            borderRadius={{ base: 'none', sm: 'xl' }}>
                 <Stack spacing="8">
                     <Stack spacing="6">
                         <Stack  spacing={{ base: '2', md: '3' }} textAlign="center">
@@ -65,8 +81,9 @@ const Login=()=>{
                         </Stack>
                     </Box>
                 </Stack>
-            </Container>
-        </Flex>
+                </Box>
+            </Flex>
+        </Stack>
             
       
     )
