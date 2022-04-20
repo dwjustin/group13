@@ -1,4 +1,5 @@
-import {Container, Button, color, Box, Grid} from '@chakra-ui/react'
+import {Container,Flex, Button, Box, Grid, Avatar, Img, bgImg, Spacer} from '@chakra-ui/react'
+
 
 const Header=()=>{
 
@@ -12,7 +13,7 @@ const Header=()=>{
     }
 
 
-    return (<Box width="100%" backgroundColor='#333'>
+    return (<Flex >
         {/* <Button sx=
         {{
             borderRadius:'0px',
@@ -21,22 +22,16 @@ const Header=()=>{
             padding:'14px 30px',
             backgroundColor:'#333',
          }} onClick={link2about}>About</Button> */}
+        <Button background='transparent' _hover={{background:"none"}} onClick={link2result}>
+             <Avatar background='transparent' src="home.png"/>
+         </Button>
+         <Spacer/>
         <Button sx=
         {{
-            borderRadius:'0px',
-            float: 'center',
-            color: 'white',
-            padding:'14px 30px',
-            backgroundColor:'#333',
-         }} onClick={link2result}>Results</Button>
-        <Button sx=
-        {{
-            borderRadius:'0px',
-            float: 'center',
-            color: 'white',
-            padding:'14px 30px',
-            backgroundColor:'#333',
-         }} onClick={link2profile}>Profile</Button>
+            backgroundColor:'transparent',
+         }} _hover={{background:"none"}} onClick={link2profile}>
+             <Avatar  name='' src=''/>
+         </Button>
         {/* <Button sx=
         {{
             borderRadius:'0px',
@@ -47,6 +42,6 @@ const Header=()=>{
          }} onClick={link2login}>Login</Button> */}
         
 
-    </Box>)
+    </Flex>)
     }
 export default Header;

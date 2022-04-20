@@ -29,14 +29,14 @@ const Login=()=>{
         
         
         <Stack direction={{base:'column', md:'row'}}>
-            <Stack>
+           
             <Flex p={8} flex={1} align={'center'} justify={'center'}>
                 <Home/>
             </Flex>
             
-            <Image width="full" height="100vh" zIndex='-1'  position='absolute'  src='background.png' alt="No photo"  /> 
-            </Stack>
-            <Flex  p={8} flex={0.5} align={'center'} justify={'center'}>
+           
+            
+            <Flex  p={8} flex={1} align={'center'} justify={'center'}>
                 
                 <Box py={{ base: '0', sm: '8' }}
             px={{ base: '4', sm: '10' }}
