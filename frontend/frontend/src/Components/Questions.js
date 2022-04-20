@@ -14,19 +14,22 @@ import { useState } from "react";
 const Questions=()=>{
     
     const [sex, setSex]=useState();
-    const [race, setRace]=useState();
+    // const [race, setRace]=useState();
     const [type, setType]=useState();
-    const [etc, setEtc]=useState();
+    const [smoke, setSmoke]=useState();
+    const [house, setHouse]=useState([]);
+
 
     function ToResult(e){
         window.location.href="/Result";
     }
 
     return (
-        <Container>
-            <Box py={{ base: '0', sm: '8' }}
+        <Container >
+            <Stack>
+            <Box  py={{ base: '0', sm: '8' }}
             px={{ base: '4', sm: '10' }}
-            bg={useBreakpointValue({ base: 'transparent', sm: 'bg-surface' })}
+            bg='white'
             boxShadow={{ base: 'none', sm: useColorModeValue('md', 'md-dark') }}
             borderRadius={{ base: 'none', sm: 'xl' }}>    
                 <Heading>Choose your Sexual Orientation</Heading>
@@ -40,9 +43,9 @@ const Questions=()=>{
                     </Stack>
                 </RadioGroup>
             </Box>
-            <Box py={{ base: '0', sm: '8' }}
+            {/* <Box py={{ base: '0', sm: '8' }}
             px={{ base: '4', sm: '10' }}
-            bg={useBreakpointValue({ base: 'transparent', sm: 'bg-surface' })}
+            bg='white'
             boxShadow={{ base: 'none', sm: useColorModeValue('md', 'md-dark') }}
             borderRadius={{ base: 'none', sm: 'xl' }}>    
                 <Heading>Choose your race</Heading>
@@ -55,13 +58,13 @@ const Questions=()=>{
                         <Radio value='5'>Polynesian</Radio>
                     </Stack>
                 </RadioGroup>
-            </Box>
+            </Box> */}
             <Box py={{ base: '0', sm: '8' }}
             px={{ base: '4', sm: '10' }}
-            bg={useBreakpointValue({ base: 'transparent', sm: 'bg-surface' })}
+                    bg='white'
             boxShadow={{ base: 'none', sm: useColorModeValue('md', 'md-dark') }}
             borderRadius={{ base: 'none', sm: 'xl' }}>    
-                <Heading>Select your Routine type</Heading>
+                <Heading>Select your Sleep Schedule.</Heading>
                 <RadioGroup onChange={setType} value={type}>   
                     <Stack direction="row">
                         <Radio value='1'>Early Bird</Radio>
@@ -70,14 +73,41 @@ const Questions=()=>{
                 </RadioGroup> 
             </Box>
             <Box py={{ base: '0', sm: '8' }}
+            px={{ base: '4', sm: '10' }}
+                    bg='white'
+            boxShadow={{ base: 'none', sm: useColorModeValue('md', 'md-dark') }}
+            borderRadius={{ base: 'none', sm: 'xl' }}>    
+                <Heading>Do you Smoke?</Heading>
+                <RadioGroup onChange={setSmoke} value={smoke}>   
+                    <Stack direction="row">
+                        <Radio value='1'>Yes</Radio>
+                        <Radio value='0'>No</Radio>
+                    </Stack>
+                </RadioGroup> 
+            </Box>
+            <Box py={{ base: '0', sm: '8' }}
+            px={{ base: '4', sm: '10' }}
+                    bg='white'
+            boxShadow={{ base: 'none', sm: useColorModeValue('md', 'md-dark') }}
+            borderRadius={{ base: 'none', sm: 'xl' }}>    
+                <Heading>Choose your Housing Preference</Heading>
+                <RadioGroup onChange={setSmoke} value={smoke}>   
+                    <Stack direction="row">
+                        <Radio value='1'>Yes</Radio>
+                        <Radio value='0'>No</Radio>
+                    </Stack>
+                </RadioGroup> 
+            </Box>
+            <Box py={{ base: '0', sm: '8' }}
                     px={{ base: '4', sm: '10' }}
-                    bg={useBreakpointValue({ base: 'transparent', sm: 'bg-surface' })}
+                    bg='white'
                     boxShadow={{ base: 'none', sm: useColorModeValue('md', 'md-dark') }}
                     borderRadius={{ base: 'none', sm: 'xl' }}>    
-                <Heading>Anything else you have to tell us?</Heading>
+                <Heading>Anything else you want to tell us?</Heading>
                 <Textarea placeholder="ex) I can sleep well even with the lights turned on.">
                 </Textarea>
             </Box>
+            
             <Button onClick={ToResult}
                 size='md'
                 height='48px'
@@ -86,6 +116,7 @@ const Questions=()=>{
                 borderColor='green.500'>
                 Search!
             </Button>
+            </Stack>
         </Container>
     )
 }

@@ -26,9 +26,9 @@ function App() {
         <ChakraProvider theme={theme}>
         <Box  width="100%" height="100%"> 
           <Image width="full" height="100vh" zIndex='-1'  position='absolute'  src='background.png' alt="No photo" objectFit='cover' /> 
-          <Route exact path='/' component={Home}/>
+          <Route exact path='/' component={Login}/>
           <Route exact path='/Profile' component={Profile}/>
-          <Route exact path='/Login' component={Login}/>
+          {/* <Route exact path='/Login' component={Login}/> */}
           <Route exact path='/Questions' component={Questions}/>
           <Route exact path='/About' component={About}/>
           <Route exact path='/Result' component={Result}/>

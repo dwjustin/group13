@@ -1,16 +1,74 @@
-import { Button, Container,Box, Input} from "@chakra-ui/react";
-import Header from './Header.js'
+import { 
+    Button,
+    Box, 
+    Input, 
+    Container, 
+    Stack, 
+    Text, 
+    HStack, 
+    Heading, 
+    useBreakpointValue, 
+    useColorModeValue, 
+    FormControl, 
+
+    Checkbox,
+    FormLabel,
+    Divider, 
+    Flex} from "@chakra-ui/react";
+
 
 const Login=()=>{
-
+    function link2result(e){
+        window.location.href="/Result";
+    }
+    function link2questions(e){
+        window.location.href="/Questions";
+    }
     return (
-        <Box>
-            <Header/>
-            <Input type='text' placeholder="User ID"/>
-            <Input placeholder="Password"/>
-            <Button>Sign In</Button>
+        <Flex>
+            <Container  bg='white' maxW="lg" py={{ base: '12', md: '24' }} px={{ base: '0', sm: '8' }}>
+                <Stack spacing="8">
+                    <Stack spacing="6">
+                        <Stack  spacing={{ base: '2', md: '3' }} textAlign="center">
+                            <Heading size={useBreakpointValue({ base: 'xs', md: 'sm' })}>
+                            Log in to your account
+                            </Heading>
+                            <HStack spacing="1" justify="center">
+                                <Text color="muted">Don't have an account?</Text>
+                                <Button onClick={link2questions} variant="link" colorScheme="blue">
+                                Sign up
+                                </Button>
+                            </HStack>
+                        </Stack>
+                    </Stack>
+                    <Box
+                        py={{ base: '0', sm: '8' }}
+                        px={{ base: '4', sm: '10' }}
+                        bg={useBreakpointValue({ base: 'transparent', sm: 'bg-surface' })}
+                        boxShadow={{ base: 'none', sm: useColorModeValue('md', 'md-dark') }}
+                        borderRadius={{ base: 'none', sm: 'xl' }}
+                    >
+                        <Stack spacing="6">
+                            <Stack spacing="5">
+                                <FormControl>
+                                    <FormLabel htmlFor="email">Email</FormLabel>
+                                    <Input id="email" type="email" />
+                                </FormControl>
+                                <FormControl>
+                                    <FormLabel htmlFor="email">Password</FormLabel>
+                                    <Input id="password" type="password" />
+                                </FormControl>
+                            </Stack>
+                            <Stack spacing="6">
+                                <Button onClick={link2result} colorScheme='blue' >Sign in</Button>
+                            </Stack>
+                        </Stack>
+                    </Box>
+                </Stack>
+            </Container>
+        </Flex>
             
-        </Box>
+      
     )
 }
 
