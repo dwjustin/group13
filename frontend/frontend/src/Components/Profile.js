@@ -1,20 +1,11 @@
 import { 
-    Container, 
     Text,
     Heading, 
-    Image, 
-    Box, 
+    Image,  
     Flex, 
-    Button, 
-    Editable,
-    EditableInput,
-    EditableTextarea,
-    EditablePreview, 
-    useEditableControls, 
-    ButtonGroup,
-    IconButton,
-    EditIcon,
-    Input  
+    Button,
+    Input, 
+
 } from "@chakra-ui/react";
 
 import Header from './Header.js'
@@ -28,6 +19,10 @@ function Profile(){
 
     //using dummy person for now
     const [data, setData] = useState();
+
+    const onImgChange=(e)=>{
+
+    }
 
     const getData = () => {
         axios
@@ -79,6 +74,7 @@ function Profile(){
                         </div>
                     ))) : 'Loading'}
                 </Text>
+                <Input type='file' accept="image/*" onChange={onImgChange}/>
                 <Button margin="20px">Edit Profile</Button>
             </Flex>
             <Flex>
