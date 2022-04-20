@@ -1,16 +1,16 @@
-import { Button, Container, Input} from "@chakra-ui/react";
+import { Button, Container,Box, Input} from "@chakra-ui/react";
 import Header from './Header.js'
 
 const Login=()=>{
 
     return (
-        <Container>
+        <Box>
             <Header/>
             <Input type='text' placeholder="User ID"/>
             <Input placeholder="Password"/>
             <Button>Sign In</Button>
             
-        </Container>
+        </Box>
     )
 }
 
