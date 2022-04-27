@@ -1,69 +1,42 @@
+const { randomInt } = require('crypto');
+const { TestUser: testUser } = require('./models/TestUser');
 const express = require('express');
-const mongoose = require('mongoose')
 const app = express();
-const db = mongoose.connection
-// const url = "mongodb://127.0.0.1:27017/apod"
+const port = process.env.PORT || 3002;
 
-const port = process.env.port || 3000;
 
-const matches = [
-    {
-        name: 'Aditya',
-        ID: 'zxc',
-        matchValue: -1,
-    },
-    {
-        name: 'Noah',
-        ID: 'asd',
-        matchValue: -1
-    },
-    {
-        name: 'Kai',
-        ID: 'qwe',
-        matchValue: -1
-    },
-    {
-        name: 'Dong',
-        ID: 'zxcv',
-        matchValue: -1
-    },
-    {
-        name: 'Diana',
-        ID: 'asdf',
-        matchValue: -1
-    },
-    {
-        name: 'Damien',
-        ID: 'qwer',
-        matchValue: -1
-    },
-    {
-        name: 'Emir',
-        ID: 'zxzx',
-        matchValue: -1
-    }
-];
+/* ENDPOINTS */
+app.get("/", (req, res) => {
+    res.send("Hello!");
+})
 
+app.get("/api/match/:userID", (req, res) => {
+    // TODO -- run the matching algorithm
+    res.send([ 
+        {"userID": testUser.userID, "matchScore": randomInt(9) + 1},
+        {"userID": testUser.userID * 2, "matchScore": randomInt(9) + 1},
+    ]);
+})
+
+app.get("/api/profile/:targetID", (req, res) => {
+    const targetID = parseInt(req.params.targetID);
+    const profile = getProfile(targetID);
+    res.append('Access-Control-Allow-Origin', ['http://localhost:3002/api/profile/1']);
+    res.send(profile);
+})
+
+/* Start the server */
 app.use(express.json());
 
-app.listen(port, () => {
-  console.log(`Listening on port ${port}... `)
+app.listen(port, (req, res) => {
+    console.log(`Listening on port ${port}...`);
 })
 
-
-app.get('/', (req, res) => {
-    console.log("pain")
-})
-
-
-app.post("./create-account", (req, res) => {
-
-})
-
-
-app.post('/matches', (req, res) => {
-
-})
-
-
-app.get("/")
+function getProfile(targetID) {
+    if(isNaN(targetID)) {
+        throw new Error("ahh");
+    }
+    // TODO - make request to database and return userprofile JSON
+    mongo
+    return testUser;
+}

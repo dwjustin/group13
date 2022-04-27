@@ -46,27 +46,4 @@ const UserSchema = mongoose.Schema(
     }
   });
 
-
-
-
-//Ignore the following, previous implementation of Location Schema
-//   ]    locationUnit1: {
-//     type: Boolean,
-//     required: true,
-// },
-// locationUnit2: {
-//     type: Boolean,
-//     required: true,
-// },
-// locationUnit3: {
-//     type: Boolean,
-//     required: true,
-// },
-// locationClarkKerr: {
-//     type: Boolean,
-//     required: true,
-// },
-// locationFoothill: {
-//     type: Boolean,
-//     required: true,
-// },
+module.exports = mongoose.model("user", UserSchema);
