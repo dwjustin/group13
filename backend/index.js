@@ -13,6 +13,8 @@ app.get("/", (req, res) => {
 
 /* ROUTING */
 
+// NOTES, WE ARE USING THE TESTUSER.JS, NOT USER.JS ATM
+
 const match = require('./routes/match');
 const profile = require('./routes/profile');
 app.use('/api', match)
