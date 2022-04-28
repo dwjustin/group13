@@ -26,7 +26,7 @@ class MatchAlgo {
                     }
                 } else {
                     if (userData.housing === null) {
-                        break;
+                        continue;
                     }
                     for (const housingOption in userData.housing) {
                         if (userData.housing[housingOption] === userObj.data.housing[housingOption]) {
@@ -40,12 +40,15 @@ class MatchAlgo {
         }
 
         // Return the final result
-        return result.sort((a, b) => b.matchScore - a.matchScore)
+        return result.sort((a, b) => b.matchScore - a.matchScore).slice(1)
     }
 }
 
 router.get("/match/:userID", async (req, res) => {
-    const user = await User.findOne({ "userID": req.params.userID })
+    const user = await User.findOne({ "userID": "" + req.params.userID })
+    if (user === null) {
+        res.send(`There is no user with ID ${req.params.userID}`)
+    }
     const listOfUsers = await (await User.find()).entries()
     res.json(MatchAlgo.sortUsersByMatchScore(user, listOfUsers));
 })
