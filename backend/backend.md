@@ -73,7 +73,8 @@ RETURNS JSON with the userID's of the matches sorted Highest-Lowest by match sco
 
 | Datapoint              | Type    | Description              |
 |------------------------|---------|--------------------------|
-| username               | String  | User Email               |
+| username               | String  | Username                 |
+| email                  | String  | Email                    |
 | password**             | String  | User Password            |
 | userID                 | Integer | unique user ID           |
 | pictureURL             | TODO    | Profile picture          |
