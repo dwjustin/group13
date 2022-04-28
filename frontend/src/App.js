@@ -25,7 +25,7 @@ function App() {
       <Switch>  
         <ChakraProvider theme={theme}>
         <Box  width="100%" height="100%"> 
-          <Image width="full" height="100vh" zIndex='-1'  position='absolute'  src='background.png' alt="No photo" objectFit='cover' /> 
+          <Image width="full" height="100vh" bgRepeat="true" zIndex='-1'  position='absolute'  src='background.png' alt="No photo" objectFit='cover' /> 
           <Route exact path='/' component={Login}/>
           <Route exact path='/Profile' component={Profile}/>
           {/* <Route exact path='/Login' component={Login}/> */}
