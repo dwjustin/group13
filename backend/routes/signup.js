@@ -5,15 +5,14 @@ const User = require("../models/User");
 
 router.post(
     "/signup", 
-    // [
-    //     check("username", "Please Enter a Valid Username").not().isEmpty(),
-    //     check("email", "Please enter a valid email").isEmail(),
-    //     check("password", "Please enter a valid password").isLength({
-    //     min: 6,
-    //     }),
-    // ],
+    [
+        check("username", "Please Enter a Valid Username").not().isEmpty(),
+        check("email", "Please enter a valid email").isEmail(),
+        check("password", "Please enter a valid password").isLength({
+        min: 6,
+        }),
+    ],
     async (req, res) => {
-        console.log(req.body)
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.status(400).json({
@@ -21,12 +20,30 @@ router.post(
             });
         }
     
+        /* Destructure Request Body */
         const { 
             username,
             email,
             password,
             data,
         } = req.body;
+        const {
+            cleanliness,
+            morningPerson,
+            nightPerson,
+            smokingTolerance,
+            housing,
+        } = data
+        const {
+            unit1,
+            unit2,
+            unit3,
+            foothill,
+            clarkKerr,
+            martinez,
+            blackwell,
+        } = housing
+
         try {
             const user = await User.findOne({
                 email
@@ -36,7 +53,6 @@ router.post(
                     msg: "User already exists"
                 })
             }
-            // console.log(data)
         } catch (err) {
             console.log(err.message);
             res.status(500).send("Error in saving user");

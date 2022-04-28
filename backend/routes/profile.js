@@ -9,7 +9,8 @@ router.get("/profile/:targetID", async (req, res) => {
         res.status(404).send(`User with ID ${targetID} does not exist`);
     }
     // res.append('Access-Control-Allow-Origin', ['http://localhost:3002/api/profile/1']);
-    res.json({ profile })
+    // res.json({ profile }) 
+    // FIXME
 })
 
 async function getProfile(targetID) {
