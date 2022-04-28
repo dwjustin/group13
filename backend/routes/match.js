@@ -41,10 +41,10 @@ class MatchAlgo {
     }
 }
 
-router.get("/match/:userID", (req, res) => {
+router.get("/match/:userID", async (req, res) => {
     // Get the user
-    const user = User.findOne(req.params.userID)
-    const listOfUsers = User.find()
+    const user = await User.findOne(req.params.userID)
+    const listOfUsers = await User.find()
     // Get the person of interest
     res.send(MatchAlgo.sortUsersByMatchScore(user, listOfUsers));
 })
