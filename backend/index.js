@@ -6,20 +6,18 @@ const InitiateMongoServer = require('./config/db.js')
 const port = process.env.PORT || 3002;
 
 
-/* ENDPOINTS */
+/* BASIC TEST */
 app.get("/", (req, res) => {
     res.status(200).send("Connection established.")
 })
 
-const match = require('./routes/match');
-app.use('/api', match)
+/* ROUTING */
 
-app.get("/api/profile/:targetID", (req, res) => {
-    const targetID = parseInt(req.params.targetID);
-    const profile = getProfile(targetID);
-    res.append('Access-Control-Allow-Origin', ['http://localhost:3002/api/profile/1']);
-    res.send(profile);
-})
+const match = require('./routes/match');
+const profile = require('./routes/profile');
+app.use('/api', match)
+app.use('/api', profile)
+
 
 /* Start the server */
 app.use(express.json());
@@ -30,12 +28,3 @@ InitiateMongoServer();
 app.listen(port, (req, res) => {
     console.log(`Listening on port ${port}...`);
 })
-
-function getProfile(targetID) {
-    if(isNaN(targetID)) {
-        throw new Error("ahh");
-    }
-    // TODO - make request to database and return userprofile JSON
-    mongo
-    return testUser;
-}

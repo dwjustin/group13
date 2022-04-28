@@ -42,7 +42,7 @@ const UserSchema = mongoose.Schema(
         Foothill: Boolean,
         Blackwell: Boolean,
         Martinez: Boolean,
-        required: true
+        // required: true
     }
   });
 
