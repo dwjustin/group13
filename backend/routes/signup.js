@@ -55,6 +55,7 @@ router.post(
                 blackwell
             } = req.body.data.housing
             console.log(req.body)
+            
             const userID = assignUserID();
             data = {
                 cleanliness,
@@ -89,7 +90,6 @@ router.post(
             });
             console.log(user)
             User.create(user)
-            // await user.save();
             res.json({
                 "message": `Successfully created user ${req.body.name} with ID ${userID}`,
                 "userID": userID
@@ -103,15 +103,6 @@ router.post(
 
 function assignUserID() {
     let ID = Math.floor(Math.random() * 10000000) + 1
-    console.log(ID)
-    // let user = User.findOne({
-    //     "userID": "" + ID
-    // }, (err, result) => {
-    //     if (result != null) {
-    //         ID = assignUserID()
-    //     }
-    //     return ID
-    // })
     return ID
 }
 

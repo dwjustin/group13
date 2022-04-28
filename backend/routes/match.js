@@ -12,27 +12,31 @@ class MatchAlgo {
      */
     static sortUsersByMatchScore(userObj, arrayOfUsers) {
         const result = []
-        // Loop through all the users
         for (const matchUser of arrayOfUsers) {
-            let point = 0
-            for (const dataKey in matchUser.data) {
+            const userData = matchUser[1].data
+            if (matchUser === userObj) {
+                break;
+            }
+            let matchScore = 0
+            for (const dataKey in userData) {
                 if (dataKey !== 'housing') {
                     //Check if the value is the same; if yes, add one point
-                    if (matchUser.data[dataKey] == userObj.data[dataKey]) {
-                        point++
+                    if (userData[dataKey] === userObj.data[dataKey]) {
+                        matchScore++
                     }
                 } else {
-                    for (const housingOption in matchUser.data.housing) {
-                        if (matchUser.data.housing[housingOption] == userObj.data.housing[housingOption]) {
-                            point++
+                    if (userData.housing === null) {
+                        break;
+                    }
+                    for (const housingOption in userData.housing) {
+                        if (userData.housing[housingOption] === userObj.data.housing[housingOption]) {
+                            matchScore++
                         }
                     }
                 }
             }
-            // Add points to result
-            matchUser.matchScore = point
             // Add users to result
-            result.push(matchUser)
+            result.push({ "user": matchUser, "matchScore": matchScore })
         }
 
         // Return the final result
@@ -40,12 +44,10 @@ class MatchAlgo {
     }
 }
 
-router.get("/match/:userID", (req, res) => {
-    // Get the user
-    const user = User.findOne(req.params.userID)
-    const listOfUsers = new Array(User.find())
-    // Get the person of interest
-    res.send(MatchAlgo.sortUsersByMatchScore(user, listOfUsers));
+router.get("/match/:userID", async (req, res) => {
+    const user = await User.findOne({ "userID": req.params.userID })
+    const listOfUsers = await (await User.find()).entries()
+    res.json(MatchAlgo.sortUsersByMatchScore(user, listOfUsers));
 })
 
 module.exports = router;
