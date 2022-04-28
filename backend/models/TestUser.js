@@ -1,4 +1,4 @@
-export const TestUser = {
+const TestUser = {
     "name": "testuser",
     "userID": 12345,
     "pictureURL": "https://tinder.com/static/tinder.png",
@@ -21,3 +21,5 @@ export const TestUser = {
         "housinglist" : ['Unit 1', 'Unit 3', 'Clark Kerr', 'Blackwell'],
     }
 }
+
+module.exports = TestUser;

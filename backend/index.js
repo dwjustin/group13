@@ -7,7 +7,7 @@ const port = process.env.PORT || 3002;
 
 /* ENDPOINTS */
 app.get("/", (req, res) => {
-    res.send("Hello!");
+    res.status(200).send("Connection established.")
 })
 
 app.get("/api/match/:userID", (req, res) => {
