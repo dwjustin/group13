@@ -10,6 +10,8 @@ import Login from './Components/Login';
 import Questions from './Components/Questions';
 import About from './Components/About';
 import Result from './Components/Result';
+import Signup from './Components/Signup';
+
 
 const theme=extendTheme({
   fonts:{
@@ -32,6 +34,7 @@ function App() {
           <Route exact path='/Questions' component={Questions}/>
           <Route exact path='/About' component={About}/>
           <Route exact path='/Result' component={Result}/>
+          <Route exact path='/Signup' component={Signup}/>
         </Box>
         </ChakraProvider>
         </Switch>

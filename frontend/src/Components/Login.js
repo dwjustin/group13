@@ -23,8 +23,9 @@ const Login=()=>{
     function link2result(e){
         window.location.href="/Result";
     }
-    function link2questions(e){
-        window.location.href="/Questions";
+    
+    function link2signup(e){
+        window.location.href="/Signup";
     }
 
     const [email, setEmail]=useState('');
@@ -40,7 +41,8 @@ const Login=()=>{
         
         axios.get("/login/")
         .then(function(response){
-
+            console.log(response);
+            link2result();
         })
         
     }
@@ -71,7 +73,7 @@ const Login=()=>{
                             </Heading>
                             <HStack spacing="1" justify="center">
                                 <Text color="muted">Don't have an account?</Text>
-                                <Button onClick={link2questions} variant="link" colorScheme="blue">
+                                <Button onClick={link2signup} variant="link" colorScheme="blue">
                                 Sign up
                                 </Button>
                             </HStack>
