@@ -21,7 +21,7 @@ router.post(
         }
     
         try {
-            const user = await User.findOne({
+            let user = await User.findOne({
                 "email": req.body.email
             });
             if (user) {

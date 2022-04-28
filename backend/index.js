@@ -18,13 +18,14 @@ app.use(express.urlencoded());
 
 /* ROUTING */
 
-// NOTES, WE ARE USING THE TESTUSER.JS, NOT USER.JS ATM
 const match = require('./routes/match');
 const profile = require('./routes/profile');
 const signup = require('./routes/signup');
+const login = require('./routes/login');
 app.use('/api', match)
 app.use('/api', profile)
 app.use('/api', signup)
+app.use('/api', login)
 
 /* Start the database server */
 InitiateMongoServer();

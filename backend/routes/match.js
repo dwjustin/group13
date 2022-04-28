@@ -43,7 +43,7 @@ class MatchAlgo {
 router.get("/match/:userID", (req, res) => {
     // Get the user
     const user = User.findOne(req.params.userID)
-    const listOfUsers = User.find()
+    const listOfUsers = new Array(User.find())
     // Get the person of interest
     res.send(MatchAlgo.sortUsersByMatchScore(user, listOfUsers));
 })
