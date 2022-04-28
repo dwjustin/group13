@@ -26,12 +26,11 @@ app.use('/api', match)
 app.use('/api', profile)
 app.use('/api', signup)
 
+/* Start the database server */
+InitiateMongoServer();
 
 /* Start the server */
 app.use(express.json());
-
-/* Start the database server */
-InitiateMongoServer();
 
 app.listen(port, (req, res) => {
     console.log(`Listening on port ${port}...`);
