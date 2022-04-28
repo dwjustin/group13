@@ -2,6 +2,7 @@ const { randomInt } = require('crypto');
 const { TestUser: testUser } = require('./models/TestUser');
 const express = require('express');
 const app = express();
+const InitiateMongoServer = require('./config/db.js')
 const port = process.env.PORT || 3002;
 
 
@@ -10,13 +11,8 @@ app.get("/", (req, res) => {
     res.status(200).send("Connection established.")
 })
 
-app.get("/api/match/:userID", (req, res) => {
-    // TODO -- run the matching algorithm
-    res.send([ 
-        {"userID": testUser.userID, "matchScore": randomInt(9) + 1},
-        {"userID": testUser.userID * 2, "matchScore": randomInt(9) + 1},
-    ]);
-})
+const match = require('./routes/match');
+app.use('/api', match)
 
 app.get("/api/profile/:targetID", (req, res) => {
     const targetID = parseInt(req.params.targetID);
@@ -27,6 +23,9 @@ app.get("/api/profile/:targetID", (req, res) => {
 
 /* Start the server */
 app.use(express.json());
+
+/* Start the database server */
+InitiateMongoServer();
 
 app.listen(port, (req, res) => {
     console.log(`Listening on port ${port}...`);

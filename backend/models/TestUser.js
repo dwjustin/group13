@@ -22,4 +22,4 @@ const TestUser = {
     }
 }
 
-module.exports = TestUser;
+module.exports.testUser = TestUser;
