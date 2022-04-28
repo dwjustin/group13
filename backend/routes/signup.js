@@ -27,7 +27,6 @@ router.post(
             if (user) {
                 return res.status(400).json({
                     "message": "User already exists",
-                    "user": user
                 })
             }
 
@@ -57,6 +56,13 @@ router.post(
             } = req.body.data.housing
             console.log(req.body)
             const userID = assignUserID();
+            data = {
+                cleanliness,
+                morningPerson,
+                nightPerson,
+                smokingTolerance,
+
+            }
             user = new User({
                 name,
                 username,
@@ -65,17 +71,21 @@ router.post(
                 userID,
                 year,
                 bio,
+                "data": {
                     cleanliness,
                     morningPerson,
                     nightPerson,
                     smokingTolerance,
+                    "housing": {
                         unit1,
                         unit2,
                         unit3,
                         foothill,
                         clarkKerr,
                         martinez,
-                        blackwell
+                        blackwell 
+                    }
+                }
             });
             console.log(user)
             User.create(user)
