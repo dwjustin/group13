@@ -15,8 +15,9 @@ import {
     FormLabel,
     Divider, 
     Flex} from "@chakra-ui/react";
+import { useState } from "react";
 import Home from "../Home";
-
+const axios=require('axios').default;
 
 const Login=()=>{
     function link2result(e){
@@ -25,6 +26,25 @@ const Login=()=>{
     function link2questions(e){
         window.location.href="/Questions";
     }
+
+    const [email, setEmail]=useState('');
+    const handleEmail=(event)=>{
+        setEmail(event.target.value);
+    }
+    const [password, setPassword]=useState('');
+    const handlePassword=(event)=>{
+        setPassword(event.target.value);
+    }
+    function handleSubmit(e){
+        
+        
+        axios.get("/login/")
+        .then(function(response){
+
+        })
+        
+    }
+
     return (
         
         
@@ -68,15 +88,15 @@ const Login=()=>{
                             <Stack spacing="5">
                                 <FormControl>
                                     <FormLabel htmlFor="email">Email</FormLabel>
-                                    <Input id="email" type="email" />
+                                    <Input id="email" type="email" onChange={handleEmail} value={email}/>
                                 </FormControl>
                                 <FormControl>
                                     <FormLabel htmlFor="email">Password</FormLabel>
-                                    <Input id="password" type="password" />
+                                    <Input id="password" type="password" onChange={handlePassword} value={password}/>
                                 </FormControl>
                             </Stack>
                             <Stack spacing="6">
-                                <Button onClick={link2result} colorScheme='blue' >Sign in</Button>
+                                <Button onClick={handleSubmit} colorScheme='blue' >Sign in</Button>
                             </Stack>
                         </Stack>
                     </Box>
