@@ -28,7 +28,7 @@ const Login=()=>{
     return (
         
         
-        <Stack direction={{base:'column', md:'row'}}>
+        <Stack direction={{base:'column', md:'row'}} spacing='10px'>
            
             <Flex p={8} flex={1} align={'center'} justify={'center'}>
                 <Home/>
