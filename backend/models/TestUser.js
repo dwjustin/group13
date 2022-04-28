@@ -3,12 +3,12 @@ const TestUser = {
     "username": "testuser123",
     "email": "xxx@berkeley.edu",
     "password": "abcd1234",
-    "userID": 12345,
+    "userID": "12345",
     "pictureURL": "https://tinder.com/static/tinder.png",
     "year" : "Freshman",
     "bio" : "Web development enjoyer",
     "data": {
-        "cleanliness": 5,
+        "cleanliness": "5",
         "morningPerson": true,
         "nightPerson": false,
         "smokingTolerance": false,
@@ -20,7 +20,7 @@ const TestUser = {
             "clarkKerr": true,
             "martinez": false,
             "blackwell": true,
-        },
+        }
     }
 }
 

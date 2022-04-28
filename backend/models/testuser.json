@@ -18,10 +18,7 @@
             "foothill": false,
             "clarkKerr": true,
             "martinez": false,
-            "blackwell": true,
-        },
-        "housinglist" : [
-            "Unit 1", "Unit 3", "Clark Kerr", "Blackwell"
-        ]
+            "blackwell": true
+        }
     }
 }

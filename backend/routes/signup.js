@@ -22,36 +22,67 @@ router.post(
     
         try {
             const user = await User.findOne({
-                email
+                "email": req.body.email
             });
             if (user) {
                 return res.status(400).json({
-                    msg: "User already exists"
+                    "message": "User already exists",
+                    "user": user
                 })
             }
-            User.insertMany({
-                "name": req.body.name,
-                "username": req.body.username,
-                "email": req.body.email,
-                "userID": assignUserID(),
-                // "pictureURL": "https://tinder.com/static/tinder.png",
-                "year" : req.body.schoolyear,
-                "bio" : req.body.bio,
-                "data": {
-                    "cleanliness": req.body.data.cleanliness,
-                    "morningPerson": req.body.data.morningPerson,
-                    "nightPerson": req.body.data.nightPerson,
-                    "smokingTolerance": req.body.data.smokingTolerance,
-                    "housing": {
-                        "unit1": req.body.data.housing.unit1,
-                        "unit2": req.body.data.housing.unit2,
-                        "unit3": req.body.data.housing.unit3,
-                        "foothill": req.body.data.housing.foothill,
-                        "clarkKerr": req.body.data.housing.clarkKerr,
-                        "martinez": req.body.data.housing.martinez,
-                        "blackwell": req.body.data.housing.blackwell,
-                    },
-                }
+
+            /* Destructure Request Body */
+            const {
+                name,
+                username,
+                email,
+                password,
+                year,
+                bio
+            } = req.body
+            const {
+                cleanliness,
+                morningPerson,
+                nightPerson,
+                smokingTolerance
+            } = req.body.data
+            const {
+                unit1,
+                unit2, 
+                unit3,
+                foothill,
+                clarkKerr,
+                martinez,
+                blackwell
+            } = req.body.data.housing
+            console.log(req.body)
+            const userID = assignUserID();
+            user = new User({
+                name,
+                username,
+                email,
+                password,
+                userID,
+                year,
+                bio,
+                    cleanliness,
+                    morningPerson,
+                    nightPerson,
+                    smokingTolerance,
+                        unit1,
+                        unit2,
+                        unit3,
+                        foothill,
+                        clarkKerr,
+                        martinez,
+                        blackwell
+            });
+            console.log(user)
+            User.create(user)
+            // await user.save();
+            res.json({
+                "message": `Successfully created user ${req.body.name} with ID ${userID}`,
+                "userID": userID
             })
         } catch (err) {
             console.log(err.message);
@@ -61,13 +92,16 @@ router.post(
 )
 
 function assignUserID() {
-    let ID = Math.floor(Math.random() * 10000) + 1
-    let user = User.findOne({
-        "userID": "" + ID
-    })
-    if (user != null) {
-        ID = assignUserID()
-    }
+    let ID = Math.floor(Math.random() * 10000000) + 1
+    console.log(ID)
+    // let user = User.findOne({
+    //     "userID": "" + ID
+    // }, (err, result) => {
+    //     if (result != null) {
+    //         ID = assignUserID()
+    //     }
+    //     return ID
+    // })
     return ID
 }
 
