@@ -36,17 +36,37 @@ const Login=()=>{
     const handlePassword=(event)=>{
         setPassword(event.target.value);
     }
+
+    const user={"email": "kaiwen129@berkeley.edu",
+                "password": "asdf123"
+            }
+    /*
     function handleSubmit(e){
-        
-        
-        axios.get("/login/")
-        .then(function(response){
-            console.log(response);
-            link2result();
+        var axios = require('axios');
+        var data = JSON.stringify({
+        "email": "kaiwen129@berkeley.edu",
+        "password": "asdf123"
+        });
+
+        var config = {
+        method: 'get',
+        url: 'http://localhost:3002/api/login',
+        headers: { 
+            'Content-Type': 'application/json'
+        },
+        data : data
+        };
+
+        axios(config)
+        .then(function (response) {
+        console.log(JSON.stringify(response.data));
         })
+        .catch(function (error) {
+        console.log(error);
+        });
         
     }
-
+    */
     return (
         
         
@@ -98,7 +118,7 @@ const Login=()=>{
                                 </FormControl>
                             </Stack>
                             <Stack spacing="6">
-                                <Button onClick={handleSubmit} colorScheme='blue' >Sign in</Button>
+                                <Button onClick={link2result} colorScheme='blue' >Sign in</Button>
                             </Stack>
                         </Stack>
                     </Box>

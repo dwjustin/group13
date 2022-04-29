@@ -65,7 +65,7 @@ const Signup=()=>{
                     </FormControl>
                 </Stack>
                 <Stack spacing="6">
-                    <Button onClick={handleSubmit} colorScheme='blue' >Sign up!</Button>
+                    <Button onClick={link2questions} colorScheme='blue' >Sign up!</Button>
                 </Stack>
             </Stack>
         </Box>

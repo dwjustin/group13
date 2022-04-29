@@ -156,7 +156,7 @@ async function main() {
     await setupServer()
 
     /* Drop all items in the database */
-    await User.remove({})
+    // await User.remove({})
 
     axios({
         method: "post",
