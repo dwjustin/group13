@@ -22,6 +22,7 @@ const Questions=()=>{
     
 
     // const [race, setRace]=useState();
+    const [year, setYear]=useState();
     const [clean, setClean]=useState();
     const [type, setType]=useState();
     const [smoke, setSmoke]=useState();
@@ -94,6 +95,22 @@ const Questions=()=>{
     return (
         <Container >
             <Stack>
+            <Box  py={{ base: '0', sm: '8' }}
+            px={{ base: '4', sm: '10' }}
+            bg='white'
+            boxShadow={{ base: 'none', sm: useColorModeValue('md', 'md-dark') }}
+            borderRadius={{ base: 'none', sm: 'xl' }}>    
+                <Heading>Choose your year.</Heading>
+                <RadioGroup onChange={setYear} value={year}>
+                    <Stack direction='row' flexWrap="wrap">
+                        <Radio value='Freshman'>Freshman</Radio>
+                        <Radio value='Sophomore'>Sophomore</Radio>
+                        <Radio value='Junior'>Junior</Radio>
+                        <Radio value='Senior'>Senior</Radio>
+                        <Radio value='Grad Student'>Grad Student</Radio>
+                    </Stack>
+                </RadioGroup>
+            </Box>    
             <Box  py={{ base: '0', sm: '8' }}
             px={{ base: '4', sm: '10' }}
             bg='white'

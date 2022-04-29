@@ -36,7 +36,7 @@ function Profile(){
       getData();
     }, []);
 
-    const housingArr = data ? data['data'].housinglist : 'loading';
+    const housingArr = ["Unit 1", "Unit 2", "Clark Kerr", "Blackwell"];//data ? data['data'].housinglist : 'loading';
 
     return(
         <div>
@@ -54,28 +54,22 @@ function Profile(){
                 />
                 <Button margin="20px">Change Profile Pic</Button>
                 <Heading as='h3' size='lg'>
-                    {data ? data['name'] : 'Loading'}<br/>
+                    Kai<br/>
                 </Heading>
                 <Text>
-                    <em>{data ? data['year'] : 'Loading'}</em><br/>
-                    {data ? data['bio'] : 'Loading'}<br/>
+                    
                 </Text>
                 <Heading as='h5' size='md'>
                     <br/>Preferences
                 </Heading>
                 <Text>
-                    Smoke Tolerance: {data ? (data['smokingTolerance'] ? 'Smoke allowed ' : 'No smoking') : 'Loading'}<br/>
-                    Sleep schedule: {data ? (data['nightPerson'] ? 'Night person' : 'Morning person') : 'Loading'}<br/>
+                    Cleanliness: 5 <br/>
+                    Smoke Tolerance: No Smoking<br/>
+                    Sleep schedule: Night Owl<br/>
                     <br/>
                     Housing preferences:<br/>
-                    {data ? (housingArr.map((item) => (
-                        <div>
-                            <Text>{item}</Text>
-                        </div>
-                    ))) : 'Loading'}
+                    Unit 1, Unit 2, Blackwell, Clark Kerr<br/>
                 </Text>
-                <Input type='file' accept="image/*" onChange={onImgChange}/>
-                <Button margin="20px">Edit Profile</Button>
             </Flex>
             <Flex>
 

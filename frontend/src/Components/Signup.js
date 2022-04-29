@@ -48,7 +48,8 @@ const Signup=()=>{
         <Box
             py={{ base: '0', sm: '8' }}
             px={{ base: '4', sm: '10' }}
-            bg={useBreakpointValue({ base: 'white', sm: 'bg-surface' })}
+            bg='white'
+            // bg={useBreakpointValue({ base: 'white', sm: 'bg-surface' })}
             boxShadow={{ base: 'none', sm: useColorModeValue('md', 'md-dark') }}
             borderRadius={{ base: 'none', sm: 'xl' }}
         >
