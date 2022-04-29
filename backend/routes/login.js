@@ -11,7 +11,8 @@ router.get("/login/", async (req, res) => {
     // console.log(user)
     if (user) {
         return res.status(200).json({
-            "user": user
+            "user": user,
+            "userID": user.userID,
         })
     }
     return res.status(400).send(`Incorrect username / password combination`)
