@@ -37,7 +37,6 @@ import axios from 'axios';
   
 export default function Card(props) {
     const id = props.id;
-    console.log(id);
     const matchScore = props.matchScore;
     const [data, setData] = useState();
 
@@ -85,25 +84,25 @@ export default function Card(props) {
     
     let housingArr = [];
     if(data){
-      if(data["data"]["housing"]["unit1"]){
+      if(data["user"]["data"]["housing"]["unit1"]){
         housingArr.push("Unit 1");
       }
-      if(data["data"]["housing"]["unit2"]){
+      if(data["user"]["data"]["housing"]["unit2"]){
         housingArr.push("Unit 2");
       }
-      if(data["data"]["housing"]["unit3"]){
+      if(data["user"]["data"]["housing"]["unit3"]){
         housingArr.push("Unit 3");
       }
-      if(data["data"]["housing"]["foothill"]){
+      if(data["user"]["data"]["housing"]["foothill"]){
         housingArr.push("Foothill");
       }
-      if(data["data"]["housing"]["clarkKerr"]){
+      if(data["user"]["data"]["housing"]["clarkKerr"]){
         housingArr.push("Clark Kerr");
       }
-      if(data["data"]["housing"]["martinez"]){
+      if(data["user"]["data"]["housing"]["martinez"]){
         housingArr.push("Martinez");
       }
-      if(data["data"]["housing"]["blackwell"]){
+      if(data["user"]["data"]["housing"]["blackwell"]){
         housingArr.push("Blackwell");
       }
     }
@@ -159,19 +158,19 @@ export default function Card(props) {
             }}
           />
           <Heading fontSize={'2xl'} fontFamily={'body'}>
-            {data ? data['name'] : 'Loading'}
+            {data ? data["user"]['name'] : 'Loading'}
           </Heading>
           <Text fontWeight={600} color={'gray.500'}>
-            {data ? data['year'] : 'Loading'}
+            {data ? data["user"]['year'] : 'Loading'}
           </Text>
           <Heading fontSize={'xs'} fontFamily={'body'}  mb={4}>
-            {matchScore ? matchScore : 'Loading'}
+            {matchScore ? "Match Score: " + matchScore : 'Loading'}
           </Heading> 
           <Text
             textAlign={'center'}
             color={useColorModeValue('gray.700', 'gray.400')}
             px={3}>
-            {data ? data['bio'] : 'Loading'}
+            {data ? data["user"]['bio'] : 'Loading'}
           </Text>
           <Stack align={'center'} justify={'center'} direction={'row'} mt={6} flexWrap="wrap">
             <Badge
@@ -180,8 +179,8 @@ export default function Card(props) {
               bg={useColorModeValue('gray.50', 'gray.800')}
               margin="10px"
               fontWeight={'400'}>
-              {data ? (data['morningPerson'] ? 'Morning person ' : 'Night person ')  : 'Loading'} 
-              {data ? (data['morningPerson'] ? getIcon('sun') : getIcon('moon'))  : 'Loading'}
+              {data ? (data["user"]['morningPerson'] ? 'Morning person ' : 'Night person ')  : 'Loading'} 
+              {data ? (data["user"]['morningPerson'] ? getIcon('sun') : getIcon('moon'))  : 'Loading'}
             </Badge>
             <Badge
               px={2}
@@ -189,8 +188,8 @@ export default function Card(props) {
               bg={useColorModeValue('gray.50', 'gray.800')}
               margin="10px"
               fontWeight={'400'}>
-              {data ? (data['smokingTolerance'] ? 'Smoke allowed ' : 'No smoking ')  : 'Loading'}
-              {data ? (data['smokingTolerance'] ? getIcon('check') : getIcon('notallowed'))  : 'Loading'}
+              {data ? (data["user"]['smokingTolerance'] ? 'Smoke allowed ' : 'No smoking ')  : 'Loading'}
+              {data ? (data["user"]['smokingTolerance'] ? getIcon('check') : getIcon('notallowed'))  : 'Loading'}
             </Badge>
             {
               housingArr.map(function(item){
@@ -229,7 +228,7 @@ export default function Card(props) {
                 <PopoverArrow />
                 <PopoverCloseButton />
                 <PopoverHeader>Email:</PopoverHeader>
-                <PopoverBody>{data? data["email"] : "Loading"}</PopoverBody>
+                <PopoverBody>{data? data["user"]["email"] : "Loading"}</PopoverBody>
               </PopoverContent>
             </Popover>
             
