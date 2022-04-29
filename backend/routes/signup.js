@@ -88,7 +88,7 @@ router.post(
                     }
                 }
             });
-            console.log(user)
+            // console.log(user)
             User.create(user)
             res.json({
                 "message": `Successfully created user ${req.body.name} with ID ${userID}`,
