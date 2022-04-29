@@ -14,6 +14,15 @@ import {
     ListIcon,
     OrderedList,
     UnorderedList,
+    Popover,
+    PopoverTrigger,
+    PopoverContent,
+    PopoverHeader,
+    PopoverBody,
+    PopoverFooter,
+    PopoverArrow,
+    PopoverCloseButton,
+    PopoverAnchor,
   } from '@chakra-ui/react';
 
 import {
@@ -28,30 +37,80 @@ import axios from 'axios';
   
 export default function Card(props) {
     const id = props.id;
-    //pfp, location preference, morning/night, room size bio
+    console.log(id);
+    const matchScore = props.matchScore;
     const [data, setData] = useState();
 
     const getData = () => {
-      console.log('helo');
       axios
           .get(`http://localhost:3002/api/profile/${id}`)
           .then((data) => setData(data.data))
-          .catch((error) => console.log('hi'));
+          .catch((error) => console.log("hello"));
     };
     
     useEffect(() => {
       getData();
+      /*
+      console.log("set1"); 
+      setData({
+        "username": "testuser",
+        "email": "testuser@berkeley.edu",
+        "password": "abcd1234",
+        "userID": 12345,
+        "pictureURL": "https://tinder.com/static/tinder.png",
+        "year" : "Freshman",
+        "bio" : "Web development enjoyer",
+        "data": {
+            "cleanliness": 5,
+            "morningPerson": true,
+            "nightPerson": false,
+            "smokingTolerance": false,
+            "housing": {
+                "unit1": true,
+                "unit2": false,
+                "unit3": true,
+                "foothill": false,
+                "clarkKerr": true,
+                "martinez": false,
+                "blackwell": true
+            }
+        }
+    });
+    */
+    console.log("set2"); 
     }, []);
 
-    /*const housingList = data["data"].housingList.map((item) => (
-      <ListItem>{item}</ListItem>
-    ));
-                  data ? data['profileURL'] : 'https://tinder.com/static/tinder.png'
+    console.log(data);
 
-    console.log(data["data"]);
-    {data ? data['name'] : 'Test'}
-    */
-    const housingArr = data ? data['data'].housinglist : 'loading';
+    
+    let housingArr = [];
+    if(data){
+      if(data["data"]["housing"]["unit1"]){
+        housingArr.push("Unit 1");
+      }
+      if(data["data"]["housing"]["unit2"]){
+        housingArr.push("Unit 2");
+      }
+      if(data["data"]["housing"]["unit3"]){
+        housingArr.push("Unit 3");
+      }
+      if(data["data"]["housing"]["foothill"]){
+        housingArr.push("Foothill");
+      }
+      if(data["data"]["housing"]["clarkKerr"]){
+        housingArr.push("Clark Kerr");
+      }
+      if(data["data"]["housing"]["martinez"]){
+        housingArr.push("Martinez");
+      }
+      if(data["data"]["housing"]["blackwell"]){
+        housingArr.push("Blackwell");
+      }
+    }
+    
+
+    const arr = [1,2,3,4];
+
     //console.log(data ? data['data'].housinglist[3] : 'loading');
     //const housingList = data ? data['data'].housinglist : 'loading'
     function getIcon(icon){
@@ -102,24 +161,24 @@ export default function Card(props) {
           <Heading fontSize={'2xl'} fontFamily={'body'}>
             {data ? data['name'] : 'Loading'}
           </Heading>
-          <Text fontWeight={600} color={'gray.500'} mb={4}>
+          <Text fontWeight={600} color={'gray.500'}>
             {data ? data['year'] : 'Loading'}
           </Text>
-          <UnorderedList>
-            
-          </UnorderedList>
+          <Heading fontSize={'xs'} fontFamily={'body'}  mb={4}>
+            {matchScore ? matchScore : 'Loading'}
+          </Heading> 
           <Text
             textAlign={'center'}
             color={useColorModeValue('gray.700', 'gray.400')}
             px={3}>
             {data ? data['bio'] : 'Loading'}
           </Text>
-  
-          <Stack align={'center'} justify={'center'} direction={'row'} mt={6}>
+          <Stack align={'center'} justify={'center'} direction={'row'} mt={6} flexWrap="wrap">
             <Badge
               px={2}
               py={1}
               bg={useColorModeValue('gray.50', 'gray.800')}
+              margin="10px"
               fontWeight={'400'}>
               {data ? (data['morningPerson'] ? 'Morning person ' : 'Night person ')  : 'Loading'} 
               {data ? (data['morningPerson'] ? getIcon('sun') : getIcon('moon'))  : 'Loading'}
@@ -128,22 +187,27 @@ export default function Card(props) {
               px={2}
               py={1}
               bg={useColorModeValue('gray.50', 'gray.800')}
+              margin="10px"
               fontWeight={'400'}>
               {data ? (data['smokingTolerance'] ? 'Smoke allowed ' : 'No smoking ')  : 'Loading'}
               {data ? (data['smokingTolerance'] ? getIcon('check') : getIcon('notallowed'))  : 'Loading'}
             </Badge>
+            {
+              housingArr.map(function(item){
+                return <Badge
+                px={2}
+                py={1}
+                fontWeight={'400'}
+                margin="10px">
+                {data ? item  : 'Loading'}
+              </Badge>
+              })
+            } 
           </Stack>
           <Stack mt={8} direction={'row'} spacing={4}>
-            <Button
-              flex={1}
-              fontSize={'sm'}
-              rounded={'full'}
-              _focus={{
-                bg: 'gray.200',
-              }}>
-              Message
-            </Button>
-            <Button
+            <Popover>
+              <PopoverTrigger>
+              <Button
               flex={1}
               fontSize={'sm'}
               rounded={'full'}
@@ -158,8 +222,17 @@ export default function Card(props) {
               _focus={{
                 bg: 'blue.500',
               }}>
-              Follow
+              Message
             </Button>
+              </PopoverTrigger>
+              <PopoverContent>
+                <PopoverArrow />
+                <PopoverCloseButton />
+                <PopoverHeader>Email:</PopoverHeader>
+                <PopoverBody>{data? data["email"] : "Loading"}</PopoverBody>
+              </PopoverContent>
+            </Popover>
+            
           </Stack>
         </Box>
       </Center>
